@@ -1,16 +1,17 @@
 import speech_recognition as sr
 from translate import Translator
+import convert
 
 
 
-
-def main(audiofile):
-    sound = "off.wav"
+def main(base64):
+    convert.convert(base64)
+    sound = "temp.wav"
 
     r = sr.Recognizer()
 
 
-    with sr.AudioFile(audiofile) as source:
+    with sr.AudioFile(sound) as source:
         r.adjust_for_ambient_noise(source)
 
 
@@ -38,6 +39,3 @@ def main(audiofile):
         print("Error {} : ".format(e) )
 
 
-
-if __name__ == "__main__":
-    main('off.wav')
